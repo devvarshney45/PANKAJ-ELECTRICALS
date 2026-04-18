@@ -1,7 +1,7 @@
 import mongoose  from "mongoose";
 const productSchema=new mongoose.Schema({
     name : String,
-    brand: String,
+    brand: { type: String, index: true },
     price : Number,
     image: String
 });

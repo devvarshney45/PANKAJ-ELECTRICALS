@@ -10,6 +10,7 @@ export default function ProductCard({ product }) {
         <img 
           src={product.image} 
           alt={product.name}
+          loading="lazy"
           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute top-2 right-2 bg-amber-500 text-slate-900 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter shadow-xl">

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { FiSearch } from "react-icons/fi";
 
 export default function Products() {
   const { company } = useParams();
