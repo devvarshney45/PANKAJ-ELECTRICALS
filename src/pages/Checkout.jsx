@@ -16,25 +16,38 @@ export default function Checkout() {
   async function placeOrder() {
     const token = localStorage.getItem("token");
 
-    const res = await fetch("https://solar-shop-85m7.onrender.com/api/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token
-      },
-      body: JSON.stringify({
-        items: cart,
-        totalAmount: total,
-        paymentMethod: "COD"
-      })
-    });
+    if (!token || token === "undefined") {
+      alert("⚠️ Please login to place an order.");
+      navigate("/login");
+      return;
+    }
 
-    if(res.ok){
-      alert("✅ Order Placed Successfully! Pay at Shop.");
-      clearCart();
-      navigate("/");
-    } else {
-      alert("❌ Order Failed");
+    try {
+      const res = await fetch("https://solar-shop-85m7.onrender.com/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        },
+        body: JSON.stringify({
+          items: cart,
+          totalAmount: total,
+          paymentMethod: "COD"
+        })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("✅ Order Placed Successfully! Pay at Shop.");
+        clearCart();
+        navigate("/");
+      } else {
+        alert(`❌ Order Failed: ${data.message || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error("Order error:", err);
+      alert("❌ Network error. Please check your connection.");
     }
   }
 
