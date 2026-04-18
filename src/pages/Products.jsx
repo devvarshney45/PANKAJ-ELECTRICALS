@@ -55,56 +55,74 @@ export default function Products() {
   });
 
   return (
-    <div className="bg-[#081426] min-h-screen text-white py-10">
+    <div className="bg-slate-950 min-h-screen text-slate-50 selection:bg-amber-500/30">
+      <Navbar />
 
-      <h1 className="text-3xl font-bold text-center mb-8 text-[#36BDEF]">
-        Our Products
-      </h1>
-
-      {/* Search + Filter */}
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-4 mb-8 justify-center">
-        <input
-          type="text"
-          placeholder="Search product..."
-          className="bg-[#0f1f33] px-4 py-2 rounded w-full md:w-1/2 border border-gray-600"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-
-        <select
-          className="bg-[#0f1f33] px-4 py-2 rounded w-full md:w-1/4 border border-gray-600"
-          value={brand}
-          onChange={handleBrandChange}
-        >
-          {brands.map((b) => (
-            <option key={b} value={b}>{b}</option>
-          ))}
-        </select>
-      </div>
-
-      {/* 🟢 Loading UI */}
-      {loading && (
-        <div className="text-center text-gray-400 mt-20">
-          Loading products...
+      <main className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16" data-aos="fade-down">
+          <p className="text-amber-500 font-bold uppercase tracking-widest mb-2">Inventory</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white">Our Product Range</h2>
+          <div className="h-1.5 w-24 bg-amber-500 mx-auto mt-6 rounded-full"></div>
         </div>
-      )}
 
-      {/* 🟢 Products */}
-      {!loading && filteredProducts.length > 0 && (
-        <div className="max-w-7xl mx-auto px-6 grid 
-                        grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((item) => (
-            <ProductCard key={item._id} product={item} />
-          ))}
+        {/* Search + Filter */}
+        <div className="glass border border-white/5 p-6 rounded-3xl flex flex-col md:flex-row gap-6 mb-16 items-center shadow-premium" data-aos="fade-up">
+          <div className="relative w-full md:w-2/3">
+            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+            <input
+              type="text"
+              placeholder="Search by product name..."
+              className="bg-white/5 border border-white/10 px-12 py-4 rounded-2xl w-full outline-none focus:border-amber-500/50 transition-all text-sm"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          <div className="w-full md:w-1/3">
+            <select
+              className="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl w-full outline-none focus:border-amber-500/50 transition-all text-sm appearance-none cursor-pointer"
+              value={brand}
+              onChange={handleBrandChange}
+            >
+              {brands.map((b) => (
+                <option key={b} value={b} className="bg-slate-900">{b} Brand</option>
+              ))}
+            </select>
+          </div>
         </div>
-      )}
 
-      {/* 🟢 No products */}
-      {!loading && filteredProducts.length === 0 && (
-        <p className="text-center text-gray-400 mt-20">
-          No products found
-        </p>
-      )}
+        {/* 🟢 Loading UI */}
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-12 h-12 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin mb-4"></div>
+            <p className="text-slate-500 font-medium">Loading high-quality products...</p>
+          </div>
+        )}
+
+        {/* 🟢 Products Grid */}
+        {!loading && filteredProducts.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" data-aos="fade-up">
+            {filteredProducts.map((item) => (
+              <ProductCard key={item._id} product={item} />
+            ))}
+          </div>
+        )}
+
+        {/* 🟢 No products Empty State */}
+        {!loading && filteredProducts.length === 0 && (
+          <div className="text-center py-20 bg-white/5 rounded-3xl border border-dashed border-white/10">
+            <p className="text-slate-500 text-lg">No products match your search criteria.</p>
+            <button 
+              onClick={() => { setSearch(""); setBrand("All"); }}
+              className="mt-6 text-amber-500 font-bold hover:underline"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
+      </main>
+
+      <Footer />
     </div>
   );
 }

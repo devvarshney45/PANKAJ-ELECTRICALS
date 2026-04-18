@@ -9,17 +9,34 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="bg-[#0f172a] text-[#f8fafc] min-h-screen overflow-x-hidden">
+    <div className="bg-slate-950 text-slate-50 min-h-screen selection:bg-amber-500/30">
       <Navbar />
-      <SecondNavbar />
-          <HeroSlider />
-      <div className="max-w-7xl mx-auto px-4">
+      
+      <main>
+        <HeroSlider />
         
-        <CompanySection />
-        <Services />
-        <Projects />
-        <About />
-      </div>
+        <div className="space-y-32 py-20">
+          <section id="about" data-aos="fade-up">
+            <div className="max-w-7xl mx-auto px-6">
+              <CompanySection />
+            </div>
+          </section>
+
+          <Services />
+
+          <section id="projects" data-aos="fade-up">
+            <div className="max-w-7xl mx-auto px-6">
+              <Projects />
+            </div>
+          </section>
+
+          <section id="contact" data-aos="fade-up">
+            <div className="max-w-7xl mx-auto px-6">
+              <About />
+            </div>
+          </section>
+        </div>
+      </main>
 
       <Footer />
     </div>

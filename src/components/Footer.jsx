@@ -1,71 +1,81 @@
 import { Link } from "react-router-dom";
+import { FiFacebook, FiInstagram, FiTwitter, FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 
 export default function Footer() {
   return (
-    <footer data-aos="fade-up" className="bg-[#0b1220] text-[#cbd5e1] pt-14 pb-8">
-
-      {/* Main Grid */}
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 text-sm">
-
-        {/* About */}
-        <div>
-          <h2 className="text-lg font-semibold text-[#38bdf8] mb-4 tracking-wide">
-            Varshney Solar
-          </h2>
-          <p className="leading-relaxed">
-            Best Solar & Inverter dealer in town. Certified partner of multiple
-            leading companies, delivering reliable solar energy solutions with
-            award-winning service and customer satisfaction.
+    <footer className="bg-slate-950 border-t border-white/5 pt-20 pb-10 px-6 mt-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        
+        {/* Brand Section */}
+        <div className="space-y-6" data-aos="fade-up">
+          <Link to="/" className="flex items-center gap-2">
+            <span className="text-2xl font-black tracking-tighter text-gradient-accent uppercase">PANKAJ ELECTRICALS</span>
+          </Link>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            Your trusted partner for high-quality electrical and solar solutions. Authorized distributor of leading brands with over 20 years of excellence in energy solutions.
           </p>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h2 className="text-lg font-semibold text-[#38bdf8] mb-4 tracking-wide">
-            Contact
-          </h2>
-          <p>PANKAJ ELECTRICALS, 
-           <br /> Main Market</p>
-          <p>Wazirganj, Uttar Pradesh</p>
-          <p className="mt-2 text-[#f97316] font-medium">
-            📞 +91 6397003690
-          </p>
-        </div>
-
-        {/* Services */}
-        <div>
-          <h2 className="text-lg font-semibold text-[#38bdf8] mb-4 tracking-wide">
-            Services
-          </h2>
-          <ul className="space-y-2">
-            <li>Solar Installation</li>
-            <li>Inverter Repair</li>
-            <li>Stabilizer Repair</li>
-            <li>Battery Replacement</li>
-          </ul>
+          <div className="flex gap-4">
+            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all border border-white/10 group">
+              <FiFacebook className="group-hover:scale-110" />
+            </a>
+            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all border border-white/10 group">
+              <FiInstagram className="group-hover:scale-110" />
+            </a>
+            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition-all border border-white/10 group">
+              <FiTwitter className="group-hover:scale-110" />
+            </a>
+          </div>
         </div>
 
         {/* Quick Links */}
-        <div>
-          <h2 className="text-lg font-semibold text-[#38bdf8] mb-4 tracking-wide">
-            Quick Links
-          </h2>
-          <ul className="space-y-2">
-            <li><Link to="/" className="hover:text-[#38bdf8]">Home</Link></li>
-            <li><Link to="/products/Luminous" className="hover:text-[#38bdf8]">Products</Link></li>
-            <li><Link to="/cart" className="hover:text-[#38bdf8]">Cart</Link></li>
-            <li><Link to="/myorders" className="hover:text-[#38bdf8]">My Orders</Link></li>
-            <li><Link to="/admin" className="hover:text-[#38bdf8]">Admin Panel</Link></li>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <h4 className="text-white font-bold mb-6 pt-2 uppercase tracking-widest text-xs">Quick Navigation</h4>
+          <ul className="space-y-4 text-slate-400 text-sm">
+            <li><Link to="/" className="hover:text-amber-500 transition-colors">Home</Link></li>
+            <li><Link to="/products" className="hover:text-amber-500 transition-colors">Shop Products</Link></li>
+            <li><Link to="/cart" className="hover:text-amber-500 transition-colors">View Cart</Link></li>
+            <li><Link to="/login" className="hover:text-amber-500 transition-colors">Client login</Link></li>
+          </ul>
+        </div>
+
+        {/* Categories */}
+        <div data-aos="fade-up" data-aos-delay="200">
+          <h4 className="text-white font-bold mb-6 pt-2 uppercase tracking-widest text-xs">Partner Brands</h4>
+          <ul className="space-y-4 text-slate-400 text-sm">
+            <li><Link to="/products/LUMINOUS" className="hover:text-amber-500 transition-colors uppercase">Luminous</Link></li>
+            <li><Link to="/products/MICROTEK" className="hover:text-amber-500 transition-colors uppercase">Microtek</Link></li>
+            <li><Link to="/products/EASTMAN" className="hover:text-amber-500 transition-colors uppercase">Eastman</Link></li>
+            <li><Link to="/products/LIVGUARD" className="hover:text-amber-500 transition-colors uppercase">Livguard</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div data-aos="fade-up" data-aos-delay="300">
+          <h4 className="text-white font-bold mb-6 pt-2 uppercase tracking-widest text-xs">Get In Touch</h4>
+          <ul className="space-y-4 text-slate-400 text-sm">
+            <li className="flex items-start gap-3">
+              <FiMapPin className="text-amber-500 mt-1 shrink-0" />
+              <span>PANKAJ ELECTRICALS,<br /> Main Market wazirganj, UP</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <FiPhone className="text-amber-500 shrink-0" />
+              <span>+91 63970 03690</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <FiMail className="text-amber-500 shrink-0" />
+              <span>support@pankajelectricals.com</span>
+            </li>
           </ul>
         </div>
 
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-700 mt-10 pt-5 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Varshney Solar. All rights reserved.
+      <div className="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center">
+        <p className="text-slate-500 text-xs">
+          © {new Date().getFullYear()} Pankaj Electricals. All rights reserved. <br className="md:hidden" />
+          Designed for Excellence in Energy.
+        </p>
       </div>
-
     </footer>
   );
 }

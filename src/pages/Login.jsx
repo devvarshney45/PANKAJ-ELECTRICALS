@@ -53,44 +53,68 @@ export default function Login() {
   }
 
   return (
-    <div className="bg-[#081426] min-h-screen flex items-center justify-center text-white">
+    <div className="bg-slate-950 min-h-screen flex items-center justify-center p-6 selection:bg-amber-500/30">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-20"></div>
       
       <form onSubmit={handleSubmit}
-        className="bg-[#0f1f33] p-8 rounded w-96">
+        className="glass border border-white/5 p-10 rounded-3xl w-full max-w-md shadow-2xl relative z-10"
+        data-aos="zoom-in"
+      >
+        <div className="text-center mb-10">
+          <Link to="/" className="text-2xl font-black tracking-tighter text-gradient-accent uppercase mb-2 block">
+            PANKAJ ELECTRICALS
+          </Link>
+          <h2 className="text-2xl font-bold text-white uppercase tracking-widest text-sm">Welcome Back</h2>
+        </div>
 
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <div className="space-y-4 mb-8">
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+            <input 
+              name="email"
+              type="email"
+              placeholder="name@company.com"
+              onChange={handleChange}
+              className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500/50 transition-all text-sm"
+              required
+            />
+          </div>
 
-        <input 
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          className="w-full p-2 mb-3 rounded bg-[#081426]"
-          required
-        />
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Password</label>
+            <input 
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              onChange={handleChange}
+              className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-amber-500/50 transition-all text-sm"
+              required
+            />
+          </div>
+        </div>
 
-        <input 
-          name="password"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-          className="w-full p-2 mb-4 rounded bg-[#081426]"
-          required
-        />
-
-        <button className="bg-green-600 w-full py-2 rounded mb-4">
-          Login
+        <button className="bg-amber-500 hover:bg-amber-600 text-slate-950 w-full py-4 rounded-xl font-black text-sm uppercase tracking-widest transition-all shadow-accent mb-6">
+          Sign In
         </button>
 
-        <div className="flex justify-center">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-px bg-white/10 flex-1"></div>
+          <span className="text-xs text-slate-500 font-bold uppercase tracking-widest">or continue with</span>
+          <div className="h-px bg-white/10 flex-1"></div>
+        </div>
+
+        <div className="flex justify-center mb-8">
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onError={()=> alert("Google Login Failed")}
+            theme="filled_black"
+            shape="pill"
           />
         </div>
 
-        <p className="text-sm text-center mt-4">
-          New user?
-          <Link to="/signup" className="text-blue-400"> Signup</Link>
+        <p className="text-sm text-center text-slate-400">
+          New to Pankaj Electricals? 
+          <Link to="/signup" className="text-amber-500 font-bold hover:underline ml-1"> Create an account</Link>
         </p>
       </form>
     </div>
