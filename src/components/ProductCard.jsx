@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useContext(CartContext);
